@@ -111,6 +111,20 @@ script_name -1
 5. After patching, validate record counts, operation counts, target trigger counts, and exact occurrence counts for the inserted script id or trigger line.
 6. If the module root is a git repository, committing the finished txt patch is the standard final step: run `git status --short`, stage only the relevant tracked/generated files for this feature, and commit with a concise message. Leave unrelated dirty files unstaged. If the user explicitly says not to commit, stop after validation instead.
 
+## Full Rebuild Remap
+
+When a full txt rebuild changes troop ordering or otherwise shifts generated ids, use the remap helper instead of hand-editing every occurrence:
+
+```bash
+python3 /home/yucy/.codex/skills/warband-modding/scripts/remap_troop_ids.py \
+  --old-source /path/to/old/source_res/module_troops.py \
+  --new-source /path/to/new/source_res/module_troops.py \
+  --module-root /path/to/module \
+  --write
+```
+
+This compares troop names in the old and new source order, builds an old-id to new-id map, and rewrites exact numeric troop-id tokens in the target txt files. Use `--dry-run` first when you want to inspect the replacement set before writing.
+
 ## Kill-Heal Pattern
 
 For player-on-kill healing:
