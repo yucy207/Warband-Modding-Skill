@@ -1,0 +1,4 @@
+interface:
+  display_name: "Warband Modding"
+  short_description: "Warband source and txt opcode workflow"
+  default_prompt: "Use $warband-modding to modify Mount&Blade Warband module source and inspect the generated txt opcode output."
