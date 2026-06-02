@@ -29,6 +29,13 @@ python3 -c "compile(open('source_res/module_scripts.py', encoding='utf-8').read(
 - If only decompiled files are present, a full module-system compile may not be available. In that case, syntax-check source and hand-check opcode only for the requested snippet.
 - When adding a new script, append it at the end of `module_scripts.py` unless there is a strong reason not to. Script ids in txt use the script id base plus the script index, so inserting in the middle shifts every later script id and breaks partial txt patching against old generated files. If a script must be inserted in the middle, regenerate all txt files that reference scripts.
 
+## Bundled Tools
+
+This skill may include redistributable third-party tools under `tools/`.
+
+- `tools/mb-code-editor/MBCodeEditor.exe`: Warband code editor/decompiler tool used to inspect or generate decompiled `source_res` files from module txt files. See `tools/mb-code-editor/README.md` for source, checksum, and usage notes.
+- Prefer skill scripts for deterministic snippet checks. Use bundled GUI/Windows tools only when decompilation or manual inspection is needed.
+
 ## Txt Opcode Checks
 
 Use `scripts/compile_snippet.py` before hand-compiling opcode. It supports operation-list snippets and simple mission trigger tuples:
